@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Windthrow Forestry Service</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --green: #217a3b;
+      --green-dark: #185c2b;
+      --gray-bg: #f6f7f9;
+      --text: #222;
+      --accent: #e6b400;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', system-ui, sans-serif;
+      color: var(--text);
+      background: #fff;
+    }
+    header {
+      position: sticky;
+      top: 0;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(8px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 2rem 3vw 2rem 3vw;
+      box-shadow: 0 2px 8px 0 rgba(0,0,0,0.03);
+      z-index: 10;
+    }
+    .logo {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -1px;
+      color: var(--green);
+    }
+    nav a {
+      margin-left: 2rem;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 1.1rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+    nav a:hover {
+      color: var(--green);
+    }
+    .hero {
+      min-height: 60vh;
+      background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1500&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    .hero-overlay {
+      background: rgba(0,0,0,0.45);
+      padding: 3rem 2rem;
+      border-radius: 1.5rem;
+      text-align: center;
+      max-width: 600px;
+    }
+    .hero-title {
+      color: #fff;
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-shadow: 0 2px 16px rgba(0,0,0,0.2);
+    }
+    .hero-desc {
+      color: #e0e0e0;
+      font-size: 1.3rem;
+      margin-bottom: 2rem;
+    }
+    .cta-btn {
+      background: var(--green);
+      color: #fff;
+      padding: 0.9rem 2.2rem;
+      border-radius: 999px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background 0.2s;
+      box-shadow: 0 2px 8px 0 rgba(33,122,59,0.08);
+      display: inline-block;
+    }
+    .cta-btn:hover {
+      background: var(--green-dark);
+    }
+    section {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: var(--green);
+      letter-spacing: -1px;
+    }
+    .about-text {
+      font-size: 1.2rem;
+      color: #444;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+    .services {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: space-between;
+    }
+    .service-card {
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 2px 12px 0 rgba(0,0,0,0.04);
+      flex: 1 1 250px;
+      min-width: 220px;
+      padding: 2rem 1.5rem;
+      transition: box-shadow 0.2s, transform 0.2s;
+      text-align: center;
+    }
+    .service-card:hover {
+      box-shadow: 0 6px 24px 0 rgba(33,122,59,0.10);
+      transform: translateY(-4px) scale(1.03);
+    }
+    .service-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+      color: var(--green-dark);
+    }
+    .service-desc {
+      color: #555;
+      font-size: 1.05rem;
+    }
+    .news-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .news-card {
+      background: #fff;
+      border-radius: 1rem;
+      box-shadow: 0 2px 12px 0 rgba(0,0,0,0.04);
+      padding: 1.5rem 1.2rem;
+    }
+    .news-title {
+      font-size: 1.15rem;
+      font-weight: 600;
+      color: var(--green-dark);
+      margin-bottom: 0.5rem;
+    }
+    .news-desc {
+      color: #555;
+      font-size: 1rem;
+    }
+    .contact-section {
+      text-align: center;
+    }
+    .contact-section p {
+      font-size: 1.15rem;
+      color: #444;
+      margin-bottom: 2rem;
+    }
+    .footer {
+      text-align: center;
+      color: #888;
+      font-size: 1rem;
+      padding: 2rem 0 1.5rem 0;
+      background: var(--gray-bg);
+      margin-top: 2rem;
+    }
+    @media (max-width: 800px) {
+      .services {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+      header {
+        flex-direction: column;
+        gap: 1rem;
+        padding: 1.2rem 2vw 1.2rem 2vw;
+      }
+      .hero-title {
+        font-size: 2.1rem;
+      }
+      section {
+        padding: 2.5rem 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">Windthrow</div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#news">News</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-overlay">
+      <div class="hero-title">Preserving Our Forests</div>
+      <div class="hero-desc">Sustainable stewardship for future generations.</div>
+      <a href="#about" class="cta-btn">Learn More</a>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About Windthrow</h2>
+    <p class="about-text">
+      Windthrow is dedicated to the conservation and sustainable management of our forests. Our mission is to protect natural habitats, educate the public, and ensure a greener future for all. We believe in the power of community and nature working together.
+    </p>
+  </section>
+
+  <section id="services" style="background: var(--gray-bg); border-radius: 2rem;">
+    <h2>Our Services</h2>
+    <div class="services">
+      <div class="service-card">
+        <div class="service-title">Conservation</div>
+        <div class="service-desc">Protecting and restoring forest ecosystems through science-based practices.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Education</div>
+        <div class="service-desc">Workshops, tours, and resources for all ages to foster a love for forests.</div>
+      </div>
+      <div class="service-card">
+        <div class="service-title">Community</div>
+        <div class="service-desc">Engaging volunteers and local partners in hands-on stewardship projects.</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="news">
+    <h2>Latest News</h2>
+    <div class="news-list">
+      <div class="news-card">
+        <div class="news-title">Spring Reforestation Drive</div>
+        <div class="news-desc">Join us this April as we plant 10,000 new trees in the valley. Volunteers welcome!</div>
+      </div>
+      <div class="news-card">
+        <div class="news-title">Forest Education Week</div>
+        <div class="news-desc">Free workshops and guided tours for families and schools. Sign up today!</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section" style="background: var(--gray-bg); border-radius: 2rem;">
+    <h2>Contact Us</h2>
+    <p>Have questions or want to get involved? Reach out to our team!</p>
+    <a href="mailto:info@windthrow.org" class="cta-btn">Email Us</a>
+  </section>
+
+  <div class="footer">
+    &copy; <span id="year"></span> Windthrow. All rights reserved.
+  </div>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
